@@ -21,7 +21,7 @@ Create a new conda environment
 - hit open dir and open the raw_data folder
 - also make sure to save into the raw_data folder once done labelling each image (a json will be created)
 
-## Start anotating (label each arrow as "arrow")
+## Start annotating (label each arrow as "arrow")
 
 From my experience it's better to have a few images but very well annotated than many that were not annotated well
 
