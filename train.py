@@ -9,6 +9,7 @@ import torchvision
 import os
 from PIL import Image, ImageDraw
 import json
+import math
 
 # Custom dataset class for arrows
 class ArrowsDataset(torch.utils.data.Dataset):
@@ -146,6 +147,7 @@ def evaluate(model, data_loader, device):
 
 if __name__ == "__main__":
     # Set number of classes (1 for background, 1 for the arrows)
+
     num_classes = 2  # 1 background + 1 for the arrows
 
     # Initialize the model
@@ -159,10 +161,20 @@ if __name__ == "__main__":
     dataset = ArrowsDataset(root="dataset", transforms=get_transform(train=True))
     dataset_test = ArrowsDataset(root="dataset", transforms=get_transform(train=False))
 
+    # Count the number of images in the dataset
+    num_images = len(dataset)
+    print(f"Total number of images: {num_images}")
+
+    # Calculate the split indices
+    num_train = math.floor(num_images * 0.8)
+    num_test = num_images - num_train
+    print(f"Number of training images: {num_train}")
+    print(f"Number of testing images: {num_test}")
+
     # Split dataset into training and testing (adjusted for 10 images)
     indices = torch.randperm(len(dataset)).tolist()
-    dataset_train = torch.utils.data.Subset(dataset, indices[:80])  # First 8 images for training
-    dataset_test = torch.utils.data.Subset(dataset, indices[80:])   # Last 2 images for testing
+    dataset_train = torch.utils.data.Subset(dataset, indices[:num_train])  # Images for training
+    dataset_test = torch.utils.data.Subset(dataset, indices[num_train:])   # Images for testing
 
     # Create data loaders (set num_workers=0 on Windows to avoid multiprocessing issues)
     data_loader = DataLoader(dataset_train, batch_size=2, shuffle=True, num_workers=0, collate_fn=collate_fn)
