@@ -4,6 +4,7 @@
 
 - Don't worry about the naming of the images just as long as they are in that folder
 - Don't rename any files yourself or things could break
+- Make sure all the files are png files ending in .png
 
 ## Open the terminal and install requirements
 
