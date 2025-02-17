@@ -28,7 +28,7 @@ From my experience it's better to have a few images but very well annotated than
 
 ### Tips
 
-- Only use images with all 4 arrows
+- Only use images with all 4 arrows (annotate all 4 arrows)
 - Zoom in to the maximum amount until you start seeing individual pixels
 - Click create polygons and click along the inside of the arrow
 - Example below:
