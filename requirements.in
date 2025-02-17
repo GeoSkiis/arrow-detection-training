@@ -1,0 +1,6 @@
+pip-tools
+matplotlib
+opencv-python
+labelme
+torch[cu113]
+torchvision[cu113]
